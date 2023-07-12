@@ -887,14 +887,9 @@ class CRM_Extendedreport_Form_Report_ExtendedReport extends CRM_Report_Form {
       $options['values'] = array_intersect_key($options, array_flip($this->_params[$fieldName . '_value']));
     }
 
-    $filterSpec = [
-      'field' => ['name' => $fieldName],
-      'table' => ['alias' => $spec['table_name']],
-    ];
-
     // for now we will literally just handle IN
-    if ($this->getFilterFieldValue($spec) && $filterSpec['field']['op'] === 'in') {
-      $options = array_intersect_key($options, array_flip($filterSpec['field']['value']));
+    if ($this->getFilterFieldValue($spec) && $spec['field']['op'] === 'in') {
+      $options = array_intersect_key($options, array_flip($spec['field']['value']));
       $this->_aggregatesIncludeNULL = FALSE;
     }
 
@@ -955,9 +950,9 @@ class CRM_Extendedreport_Form_Report_ExtendedReport extends CRM_Report_Form {
    *   Array containing the name descriptors we have.
    *   If a value is found it will be added to the spec.
    *
-   * @return string
+   * @return string|array
    */
-  protected function getFilterFieldValue(array &$spec): string {
+  protected function getFilterFieldValue(array &$spec) {
     $fieldName = $spec['table_name'] . '_' . $spec['name'];
     $valueKey = $fieldName . '_value';
     if (isset($this->_params[$valueKey])) {
