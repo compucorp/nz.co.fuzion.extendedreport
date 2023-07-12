@@ -13,7 +13,7 @@
     <author>Eileen McNaughton</author>
     <email>eileen@fuzion.co.nz</email>
   </maintainer>
-  <releaseDate>2022-08-15</releaseDate>
+  <releaseDate>2023-07-12</releaseDate>
   <version>5.18</version>
   <develStage>stable</develStage>
   <compatibility>
@@ -22,6 +22,7 @@
   <comments>Extended reports create other report options such as crosstab urls, multiple contact custom fields, price
     set reports
   </comments>
+  <comments>PATCH 1</comments>
   <civix>
     <namespace>CRM/Extendedreport</namespace>
     <format>22.05.0</format>
